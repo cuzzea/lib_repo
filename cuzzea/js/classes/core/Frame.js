@@ -1,8 +1,12 @@
-var Frame = function(){
+/*
+ * Class to handel frame
+ * implements eventListners
+ */
+var Frame = function(_ms){
 	var listners={},
 		timer,
 		can_run,
-		ms=SETTINGS.game.frame_duration,
+		ms = _ms ? _ms : 200,
 		step=function(){
 			if(!can_run) return ;
 			fireEvent(Frame.ON_ENTER);

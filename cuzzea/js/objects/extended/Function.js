@@ -2,8 +2,6 @@
 Function.prototype.extend = function(fn) {
     var self = this;
     return function() {
-        //console.log(self)
-        //console.log(fn)
         try {
             var returnValue1 = self(arguments[0]);
         } catch(e) {

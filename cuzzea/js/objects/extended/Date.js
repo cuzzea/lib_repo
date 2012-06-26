@@ -1,4 +1,19 @@
-
+/*
+ * Contains:
+ *	toYearWeekObject		- returns the weeks in years contained in the interval
+ *	getMySqlDate			- returns mysql formated date
+ *	getWeek					- returns the week number
+ *	getWeekYear				- return the year of the week
+ *	getISODay				- returns the ISO day
+ *	getMaxWeekOfYear		- returns the last week of the curent year
+ *	addDays					- adds the number of days to the date object
+ *	addDaysToSunday			- adds days so the date will be on the first sunday
+ *	addDaysToMonday			- adds days so the date will be on the first monday
+ *	addWeeks				- adds the number of weeks to the date object
+ *	toArray					- returns a array containing day, month and year
+ */
+ 
+ 
 /*
  * @params start week, start year, end week, end year
  * @response {year1:{week1:true,week2:true,...},...}
@@ -64,13 +79,12 @@ Date.prototype.getWeekYear = function() {
 
 Date.prototype.addDays = function(nr_of_days) {
     var a = new Date(this.valueOf());
-    ;
     return nr_of_days == 0 ? this : new Date(a.setDate(a.getDate() + nr_of_days));
 }
 Date.prototype.addDaysToSunday = function() {
     return this.addDays(7 - (this.getDay() == 0 ? 7 : this.getDay()));
 }
-Date.prototype.moveToStartOfNextWeek = function() {
+Date.prototype.addDaysToMonday = function() {
     return this.addDays(8 - (this.getDay() == 0 ? 7 : this.getDay()));
 }
 Date.prototype.addWeeks = function(weeks) {
@@ -96,4 +110,12 @@ Date.prototype.getMaxWeekOfYear = function() {
         maxWeek = 53;
     }
     return maxWeek;
-}
+};
+
+Date.prototype.toArray = function() {
+	return [
+		this.getDate(),
+		(this.getMonth() + 1),
+		this.getFullYear()
+	];
+};

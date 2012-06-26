@@ -1,4 +1,9 @@
 /*
+ * Contains:
+ *	compare		- returns true if arrays are the same
+ */
+
+/*
  * Custom augmentation of Array prototype, that compares current array with an array in parameter.
  *
  * @param testArr - array to compare with.
